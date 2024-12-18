@@ -1,4 +1,15 @@
 // Produce an option of rock, paper or scissors
-// COMPUTE a random number between 0 and 2, inclusive
-// GET an option from a list with the random number
-// PRINT the output to the console 
+function getComputerChoice() {
+    // COMPUTE a random number between 0 and 2, inclusive
+    let randomNumber = Math.floor(Math.random() * 3);
+    // INIT a list of computer options
+    let options = ['rock', 'paper', 'scissors']
+    // GET an option from a list with the random number
+    let choice = options[randomNumber]
+    // OUTPUT the computer's choice
+    return choice
+}
+
+// console.log(getComputerChoice());
+
+//
