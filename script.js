@@ -14,33 +14,36 @@ function getComputerChoice() {
 
 // Ask the user for their choice
 // INIT a function to get the users choice
-function getHumanChoice() {
+function getHumanChoice(inputChoice) {
     // INIT a variable for the users choice and prompt them to input their choice
-    // let humanChoice = prompt("Select rock, paper, or scissors: ")
-    // let humanChoice = 'rock'
+
     // IF the user inputs rock
-    if (humanChoice === 'rock') {
         // Display the message: "You chose rock"
+    // ELSE IF the user inputs paper
+        // Display the message: "You chose paper"
+    // ELSE IF the user inputs scissors
+        // Display the message: "You chose scissors"
+    // ELSE
+        // Display the message: "Incorrect input"
+        // Exit the program
+    // OUTPUT the human choice
+
+    let humanChoice = (inputChoice) ? inputChoice : prompt("Select rock, paper, or scissors: ")
+    if (humanChoice === 'rock') {
         console.log("You chose rock");
     }
-    // ELSE IF the user inputs paper
     else if (humanChoice === 'paper') {
-        // Display the message: "You chose paper"
         console.log("You chose paper");
     }
-    // ELSE IF the user inputs scissors
     else if (humanChoice === 'scissors') {
-        // Display the message: "You chose scissors"
+
         console.log("You chose scissors");
     }
-    // ELSE
     else {
-        // Display the message: "Incorrect input"
         console.log("Incorrect input")
-        // Exit the program
-        // break;
+        return
     }
-    // OUTPUT the human choice
+    
     return humanChoice
 }
 
