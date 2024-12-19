@@ -47,4 +47,7 @@ function getHumanChoice(inputChoice) {
     return humanChoice
 }
 
-getHumanChoice();
+// INIT a variable to store the user score and set it to zero
+// INIT a variable to store the computer score and set it to zero
+let humanScore = 0;
+let computerScore = 0;
