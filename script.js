@@ -53,6 +53,7 @@ let computerScore = 0;
 
 // Play a round of rock, paper, scissors
 // INIT a function that takes in getComputerChoice and getHumanChoice
+    // CONVERT inputs to lowercase
     // IF getHumanChoice is rock and getComputerChoice is paper or getHumanChoice is scissors and getComputerChoice is rock or getHumanChoice is paper and get ComputerChoice is scissors
         // Display the message "You lose! getComputerChoice beats getHumanChoice", with the first letter capitalize
         // Increment the computerScore by one
@@ -63,6 +64,9 @@ let computerScore = 0;
         // Increment the humanScore by one
 
 function playRound(computerChoice, humanChoice) {
+    computerChoice = computerChoice.toLowerCase()
+    humanChoice = humanChoice.toLowerCase()
+
     if (humanChoice === 'rock' && computerChoice === 'paper' ||
         humanChoice === 'scissors' && computerChoice === 'rock' ||
         humanChoice === 'paper' && computerChoice === 'scissors') {
@@ -80,3 +84,5 @@ function playRound(computerChoice, humanChoice) {
 
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
+
+playRound(computerSelection, humanSelection)
