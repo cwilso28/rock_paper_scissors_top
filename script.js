@@ -1,20 +1,22 @@
 // Produce an option of rock, paper or scissors
-function getComputerChoice() {
     // COMPUTE a random number between 0 and 2, inclusive
-    let randomNumber = Math.floor(Math.random() * 3);
     // INIT a list of computer options
-    let options = ['rock', 'paper', 'scissors']
     // GET an option from a list with the random number
-    let choice = options[randomNumber]
     // OUTPUT the computer's choice
-    return choice
-}
 
-// console.log(getComputerChoice());
+function getComputerChoice() {
+
+    let randomNumber = Math.floor(Math.random() * 3);
+
+    let options = ['rock', 'paper', 'scissors'];
+
+    let choice = options[randomNumber];
+
+    return choice;
+}
 
 // Ask the user for their choice
 // INIT a function to get the users choice
-function getHumanChoice(inputChoice) {
     // INIT a variable for the users choice and prompt them to input their choice
 
     // IF the user inputs rock
@@ -28,6 +30,7 @@ function getHumanChoice(inputChoice) {
         // Exit the program
     // OUTPUT the human choice
 
+function getHumanChoice(inputChoice) {
     let humanChoice = (inputChoice) ? inputChoice : prompt("Select rock, paper, or scissors: ")
     if (humanChoice.toLowerCase() === 'rock') {
         console.log("You chose rock");
@@ -39,8 +42,8 @@ function getHumanChoice(inputChoice) {
         console.log("You chose scissors");
     }
     else {
-        console.log("Incorrect input")
-        return
+        console.log("Incorrect input");
+        return;
     }
     
     return humanChoice
@@ -66,7 +69,7 @@ let computerScore = 0;
 function playRound(computerChoice, humanChoice) {
     computerChoice = computerChoice.toLowerCase()
     humanChoice = humanChoice.toLowerCase()
-
+    // One conditional block can handle all of the logic, whether it's all winning or all losing combinations
     if (humanChoice === 'rock' && computerChoice === 'paper' ||
         humanChoice === 'scissors' && computerChoice === 'rock' ||
         humanChoice === 'paper' && computerChoice === 'scissors') {
@@ -100,17 +103,24 @@ function playGame() {
         const computerSelection = getComputerChoice();
 
         computerScore, humanScore = playRound(computerSelection, humanSelection);
-        console.log("Round " + i + 1);
+
+        console.log("Round " + (i + 1));
         console.log("Computer score: " + computerScore);
-        console.log("You Score: " + humanScore);
+        console.log("Your Score: " + humanScore);
         console.log("--------------------------------------")
     }
 
     if (computerScore > humanScore) {
-        console.log("You lose!")
+        console.log("You lose!");
+    }
+
+    else if (computerScore === humanScore) {
+        console.log("It's a tie!");
     }
 
     else {
-        console.log("You win!")
+        console.log("You win!");
     }
 }
+
+playGame()
