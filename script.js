@@ -80,9 +80,37 @@ function playRound(computerChoice, humanChoice) {
         console.log("You win! " + humanChoice + " beats " + computerChoice);
         humanScore++;
     }
+    return computerScore, humanScore
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+// INIT a function to play 5 rounds of the rock paper scissors
+    // INIT a loop to play the game for 5 rounds
+        // INIT the human selection function as a variable
+        // INIT the computer selection function as a variable
+        // CALL the play round function to play a round
+        // Return the scores of the computer and human
+        // EXIT the loop after 5 rounds
+    // IF the computer score is greater than the human score
+        // Display the message "You lose!"
+    // ELSE
+        // Display the message "You win!"
+function playGame() {
+    for(let i = 0; i < 5; i++ ) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
 
-playRound(computerSelection, humanSelection)
+        computerScore, humanScore = playRound(computerSelection, humanSelection);
+        console.log("Round " + i + 1);
+        console.log("Computer score: " + computerScore);
+        console.log("You Score: " + humanScore);
+        console.log("--------------------------------------")
+    }
+
+    if (computerScore > humanScore) {
+        console.log("You lose!")
+    }
+
+    else {
+        console.log("You win!")
+    }
+}
