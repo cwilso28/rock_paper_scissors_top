@@ -29,14 +29,13 @@ function getHumanChoice(inputChoice) {
     // OUTPUT the human choice
 
     let humanChoice = (inputChoice) ? inputChoice : prompt("Select rock, paper, or scissors: ")
-    if (humanChoice === 'rock') {
+    if (humanChoice.toLowerCase() === 'rock') {
         console.log("You chose rock");
     }
-    else if (humanChoice === 'paper') {
+    else if (humanChoice.toLowerCase() === 'paper') {
         console.log("You chose paper");
     }
-    else if (humanChoice === 'scissors') {
-
+    else if (humanChoice.toLowerCase() === 'scissors') {
         console.log("You chose scissors");
     }
     else {
@@ -51,3 +50,33 @@ function getHumanChoice(inputChoice) {
 // INIT a variable to store the computer score and set it to zero
 let humanScore = 0;
 let computerScore = 0;
+
+// Play a round of rock, paper, scissors
+// INIT a function that takes in getComputerChoice and getHumanChoice
+    // IF getHumanChoice is rock and getComputerChoice is paper or getHumanChoice is scissors and getComputerChoice is rock or getHumanChoice is paper and get ComputerChoice is scissors
+        // Display the message "You lose! getComputerChoice beats getHumanChoice", with the first letter capitalize
+        // Increment the computerScore by one
+    // ELSE IF getHumanChoice equals getComputerChoice
+        // Display the message "It's a draw!"
+    // ELSE
+        // Display the message "You win! getHumanChoice beats getComputerChoice", with the first letter capitalized
+        // Increment the humanScore by one
+
+function playRound(computerChoice, humanChoice) {
+    if (humanChoice === 'rock' && computerChoice === 'paper' ||
+        humanChoice === 'scissors' && computerChoice === 'rock' ||
+        humanChoice === 'paper' && computerChoice === 'scissors') {
+        console.log("You lose! " + computerChoice + " beats " + humanChoice);
+        computerScore++;
+    }
+    else if (humanChoice === computerChoice){
+        console.log("It's a draw!");
+    }
+    else {
+        console.log("You win! " + humanChoice + " beats " + computerChoice);
+        humanScore++;
+    }
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
