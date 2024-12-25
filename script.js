@@ -53,6 +53,7 @@ function getHumanChoice(inputChoice) {
 // INIT a variable to store the computer score and set it to zero
 let humanScore = 0;
 let computerScore = 0;
+let round = 0;
 
 // Play a round of rock, paper, scissors
 // INIT a function that takes in getComputerChoice and getHumanChoice
@@ -83,7 +84,8 @@ function playRound(humanChoice, computerChoice = getComputerChoice()) {
         resultsp.textContent = "You win! " + humanChoice + " beats " + computerChoice;
         humanScore++;
     }
-    return computerScore, humanScore
+    round++;
+    return computerScore, humanScore, round
 }
 
 // INIT a function to play 5 rounds of the rock paper scissors
@@ -97,29 +99,25 @@ function playRound(humanChoice, computerChoice = getComputerChoice()) {
         // Display the message "You lose!"
     // ELSE
         // Display the message "You win!"
-function playGame() {
-    for(let i = 0; i < 5; i++ ) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
+function playGame(humanChoice) {
 
-        computerScore, humanScore = playRound(computerSelection, humanSelection);
+    computerScore, humanScore, round = playRound(humanChoice);
 
-        console.log("Round " + (i + 1));
-        console.log("Computer score: " + computerScore);
-        console.log("Your Score: " + humanScore);
-        console.log("--------------------------------------")
-    }
+    roundsp.textContent = "Round " + round;
+    computerscoresp.textContent = "Computer score: " + computerScore;
+    humanscorep.textContent = "Your Score: " + humanScore;
 
-    if (computerScore > humanScore) {
-        console.log("You lose!");
-    }
+    if (computerScore == 5 || humanScore == 5) {
+        if (computerScore > humanScore) {
+            resultsp.textContent = "You lose!";
+        }
 
-    else if (computerScore === humanScore) {
-        console.log("It's a tie!");
-    }
-
-    else {
-        console.log("You win!");
+        else {
+            resultsp.textContent = "You win!";
+        }
+        humanScore = 0;
+        computerScore = 0;
+        round = 0;
     }
 }
 
@@ -131,26 +129,21 @@ const rockBtn = document.querySelector("#rock-button");
 const paperBtn = document.querySelector("#paper-button");
 const scissorsBtn = document.querySelector("#scissors-button");
 const resultsp = document.querySelector(".choices");
+const computerscoresp = document.querySelector(".computer-score");
+const roundsp = document.querySelector(".round");
+const humanscorep = document.querySelector(".human-score")
 
 rockBtn.addEventListener("click", () => {
     const humanChoice = 'rock';
-    computerScore, humanScore = playRound(humanChoice);
-    console.log(computerScore);
-    console.log(humanScore);
+    playGame(humanChoice);
 });
 
 paperBtn.addEventListener("click", () => {
     const humanChoice = 'paper';
-    const computerChoice = getComputerChoice();
-    computerScore, humanScore = playRound(humanChoice);
-    console.log(computerScore);
-    console.log(humanScore);
+    playGame(humanChoice);
 });
 
 scissorsBtn.addEventListener("click", () => {
     const humanChoice = 'scissors';
-    const computerChoice = getComputerChoice();
-    computerScore, humanScore = playRound(humanChoice);
-    console.log(computerScore);
-    console.log(humanScore);
+    playGame(humanChoice);
 });
