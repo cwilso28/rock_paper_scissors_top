@@ -66,21 +66,21 @@ let computerScore = 0;
         // Display the message "You win! getHumanChoice beats getComputerChoice", with the first letter capitalized
         // Increment the humanScore by one
 
-function playRound(computerChoice, humanChoice) {
+function playRound(humanChoice, computerChoice = getComputerChoice()) {
     computerChoice = computerChoice.toLowerCase()
     humanChoice = humanChoice.toLowerCase()
     // One conditional block can handle all of the logic, whether it's all winning or all losing combinations
     if (humanChoice === 'rock' && computerChoice === 'paper' ||
         humanChoice === 'scissors' && computerChoice === 'rock' ||
         humanChoice === 'paper' && computerChoice === 'scissors') {
-        console.log("You lose! " + computerChoice + " beats " + humanChoice);
+        resultsp.textContent = "You lose! " + computerChoice + " beats " + humanChoice;
         computerScore++;
     }
     else if (humanChoice === computerChoice){
-        console.log("It's a draw!");
+        resultsp.textContent = "It's a draw!";
     }
     else {
-        console.log("You win! " + humanChoice + " beats " + computerChoice);
+        resultsp.textContent = "You win! " + humanChoice + " beats " + computerChoice;
         humanScore++;
     }
     return computerScore, humanScore
@@ -123,4 +123,34 @@ function playGame() {
     }
 }
 
-playGame()
+// SELECT the buttons
+// Monitor the buttons for a clicks
+// Assign the human choice based on the button pushed
+// Play one round with the human choice
+const rockBtn = document.querySelector("#rock-button");
+const paperBtn = document.querySelector("#paper-button");
+const scissorsBtn = document.querySelector("#scissors-button");
+const resultsp = document.querySelector(".choices");
+
+rockBtn.addEventListener("click", () => {
+    const humanChoice = 'rock';
+    computerScore, humanScore = playRound(humanChoice);
+    console.log(computerScore);
+    console.log(humanScore);
+});
+
+paperBtn.addEventListener("click", () => {
+    const humanChoice = 'paper';
+    const computerChoice = getComputerChoice();
+    computerScore, humanScore = playRound(humanChoice);
+    console.log(computerScore);
+    console.log(humanScore);
+});
+
+scissorsBtn.addEventListener("click", () => {
+    const humanChoice = 'scissors';
+    const computerChoice = getComputerChoice();
+    computerScore, humanScore = playRound(humanChoice);
+    console.log(computerScore);
+    console.log(humanScore);
+});
